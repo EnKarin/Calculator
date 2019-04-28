@@ -5,6 +5,9 @@
 #include "../Calculator/Div.cpp"
 #include "../Calculator/Root.cpp"
 #include "../Calculator/Expon.cpp"
+#include "../Calculator/Delete.cpp" 
+#include "../Calculator/Clear.cpp" 
+#include <string>
 
 TEST(TestSumInt, TestPozitive) {
 	ASSERT_EQ(12, Sum(7, 5));
@@ -136,4 +139,10 @@ TEST(TestExponFloat, TestNegative) {
 	ASSERT_DOUBLE_EQ(1.110922324009, Expon(-1.054003));
 	ASSERT_DOUBLE_EQ(2116.5051101401, Expon(-46.00549));
 	ASSERT_DOUBLE_EQ(511527665674.29419, Expon(-715211.623));
+}
+
+TEST(TestData, TestDelete) {
+	string s1 = "1984", s2 = "198", s3 = "19+448=", s4 = "19+448";
+	ASSERT_STRCASEEQ(s2.c_str(), Delete(s1).c_str());
+	ASSERT_STRCASEEQ(s4.c_str(), Delete(s3).c_str());
 }
