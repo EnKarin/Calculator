@@ -2,6 +2,7 @@
 #include "../Calculator/Sum.cpp"
 #include "../Calculator/Diff.cpp"
 #include "../Calculator/Multi.cpp"
+#include "../Calculator/Div.cpp"
 
 TEST(TestSumInt, TestPozitive) {
 	ASSERT_EQ(12, Sum(7, 5));
@@ -73,4 +74,28 @@ TEST(TestMultiFloat, TestNegative) {
 	ASSERT_DOUBLE_EQ(-0.04960032, Multi(-62.0004, 0.0008));
 	ASSERT_DOUBLE_EQ(9391.141987812, Multi(-28.20084, -333.0093));
 	ASSERT_DOUBLE_EQ(-20459598.15243894, Multi(2604.954, -7854.11111));
+}
+
+TEST(TestDivInt, TestPozitive) {
+	ASSERT_EQ(18, Div(432, 24));
+	ASSERT_EQ(3351, Div(17589399, 5249));
+	ASSERT_EQ(6251, Div(41599298573, 6654823));
+}
+
+TEST(TestDivInt, TestNegative) {
+	ASSERT_EQ(-5, Div(-25, 5));
+	ASSERT_EQ(-362, Div(2998808, -8284));
+	ASSERT_EQ(32416, Div(-20244764480, -624530));
+}
+
+TEST(TestDivFloat, TestPozitive) {
+	ASSERT_DOUBLE_EQ(0.0624, Div(0.003905616, 0.06259));
+	ASSERT_DOUBLE_EQ(24.541, Div(12882.822491, 524.951));
+	ASSERT_DOUBLE_EQ(764.0038, Div(2559324.64036186, 3349.8847));
+}
+
+TEST(TestDivFloat, TestNegative) {
+	ASSERT_DOUBLE_EQ(-62.0004, Div(-0.04960032, 0.0008));
+	ASSERT_DOUBLE_EQ(28.20084, Div(-9391.141987812, -333.0093));
+	ASSERT_DOUBLE_EQ(-2604.954, Div(20459598.15243894, -7854.11111));
 }
