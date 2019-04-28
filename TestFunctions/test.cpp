@@ -4,6 +4,7 @@
 #include "../Calculator/Multi.cpp"
 #include "../Calculator/Div.cpp"
 #include "../Calculator/Root.cpp"
+#include "../Calculator/Expon.cpp"
 
 TEST(TestSumInt, TestPozitive) {
 	ASSERT_EQ(12, Sum(7, 5));
@@ -113,3 +114,26 @@ TEST(TestRoot, TestFloat) {
 	ASSERT_DOUBLE_EQ(989637.0187, Root(979381428781.4241));
 }
 
+TEST(TestExponInt, TestPozitive) {
+	ASSERT_EQ(1, Expon(1));
+	ASSERT_EQ(841, Expon(29));
+	ASSERT_EQ(8549406369, Expon(92463));
+}
+
+TEST(TestExponInt, TestNegative) {
+	ASSERT_EQ(36, Expon(-6));
+	ASSERT_EQ(60516, Expon(-246));
+	ASSERT_EQ(133577092324, Expon(-365482));
+}
+
+TEST(TestExponFloat, TestPozitive) {
+	ASSERT_DOUBLE_EQ(0.00008836, Expon(0.0094));
+	ASSERT_DOUBLE_EQ(1093.32067716, Expon(33.0654));
+	ASSERT_DOUBLE_EQ(340545485533.4848, Expon(583562.75201));
+}
+
+TEST(TestExponFloat, TestNegative) {
+	ASSERT_DOUBLE_EQ(1.110922324009, Expon(-1.054003));
+	ASSERT_DOUBLE_EQ(2116.5051101401, Expon(-46.00549));
+	ASSERT_DOUBLE_EQ(511527665674.29419, Expon(-715211.623));
+}
