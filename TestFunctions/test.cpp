@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "../Calculator/Sum.cpp"
 #include "../Calculator/Diff.cpp"
+#include "../Calculator/Multi.cpp"
 
 TEST(TestSumInt, TestPozitive) {
 	ASSERT_EQ(12, Sum(7, 5));
@@ -48,4 +49,28 @@ TEST(TestDiffFloat, TestNegative) {
 	ASSERT_DOUBLE_EQ(-5.00008, Diff(-0.00008, 5));
 	ASSERT_DOUBLE_EQ(-219.3775, Diff(-125.347, 94.0305));
 	ASSERT_DOUBLE_EQ(21419508.747447, Diff(21482163.000007, 62654.25256));
+}
+
+TEST(TestMultiInt, TestPozitive) {
+	ASSERT_EQ(144, Multi(18, 8));
+	ASSERT_EQ(307330, Multi(365, 842));
+	ASSERT_EQ(520297666, Multi(20489, 25394));
+}
+
+TEST(TestMultiInt, TestNegative) {
+	ASSERT_EQ(-380, Multi(-20, 19));
+	ASSERT_EQ(-32830050, Multi(6666, -4925));
+	ASSERT_EQ(3295229168, Multi(-34568, -95326));
+}
+
+TEST(TestMultiFloat, TestPozitive) {
+	ASSERT_DOUBLE_EQ(0.002535, Multi(0.003, 0.845));
+	ASSERT_DOUBLE_EQ(33.40479555, Multi(35.34899, 0.945));
+	ASSERT_DOUBLE_EQ(254714364.734326, Multi(554932.652, 459.0005));
+}
+
+TEST(TestMultiFloat, TestNegative) {
+	ASSERT_DOUBLE_EQ(-0.04960032, Multi(-62.0004, 0.0008));
+	ASSERT_DOUBLE_EQ(9391.141987812, Multi(-28.20084, -333.0093));
+	ASSERT_DOUBLE_EQ(-20459598.15243894, Multi(2604.954, -7854.11111));
 }
