@@ -18,4 +18,14 @@ std::string Clear(std::string);
 
 std::string Delete(std::string);
 
+std::string parse(std::string);
+
+std::string bracklf(std::string &, int, int &);
+
+std::string brackri(std::string &, int, int &);
+
+double getsecnum(std::string, int, int &);
+
+double getfirnum(std::string, int, int &);
+
 #endif 
