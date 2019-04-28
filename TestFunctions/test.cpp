@@ -3,6 +3,7 @@
 #include "../Calculator/Diff.cpp"
 #include "../Calculator/Multi.cpp"
 #include "../Calculator/Div.cpp"
+#include "../Calculator/Root.cpp"
 
 TEST(TestSumInt, TestPozitive) {
 	ASSERT_EQ(12, Sum(7, 5));
@@ -99,3 +100,16 @@ TEST(TestDivFloat, TestNegative) {
 	ASSERT_DOUBLE_EQ(28.20084, Div(-9391.141987812, -333.0093));
 	ASSERT_DOUBLE_EQ(-2604.954, Div(20459598.15243894, -7854.11111));
 }
+
+TEST(TestRoot, TestInt) {
+	ASSERT_EQ(2, Root(4));
+	ASSERT_EQ(268, Root(71824));
+	ASSERT_EQ(92492, Root(8554770064));
+}
+
+TEST(TestRoot, TestFloat) {
+	ASSERT_DOUBLE_EQ(0.008, Root(0.000064));
+	ASSERT_DOUBLE_EQ(245.332, Root(60187.790224));
+	ASSERT_DOUBLE_EQ(989637.0187, Root(979381428781.4241));
+}
+
