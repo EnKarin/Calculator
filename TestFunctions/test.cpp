@@ -146,3 +146,11 @@ TEST(TestData, TestDelete) {
 	ASSERT_STRCASEEQ(s2.c_str(), Delete(s1).c_str());
 	ASSERT_STRCASEEQ(s4.c_str(), Delete(s3).c_str());
 }
+
+TEST(TestData, TestClear) {
+	string s1 = "1937", s2 = "198.40+", s3 = "19+448=567";
+	ASSERT_STRCASEEQ("", Clear(s1).c_str());
+	ASSERT_STRCASEEQ("", Clear(s2).c_str());
+	ASSERT_STRCASEEQ("", Clear(s3).c_str());
+
+}
