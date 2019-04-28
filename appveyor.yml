@@ -5,7 +5,6 @@ platform: x86
 before_build:
   - nuget restore
 build:
-  project: /Calculator/Calculator.sln
   verbosity: minimal
 test_script:
   - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\test.exe '
