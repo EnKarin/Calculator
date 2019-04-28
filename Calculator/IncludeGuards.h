@@ -30,6 +30,6 @@ int replace(std::string&, int, int, double);
 
 int replace(std::string &, int, int, double);
 
-double getsecnum(std::string, int, int&)
+double getsecnum(std::string, int, int&);
 
 #endif 
