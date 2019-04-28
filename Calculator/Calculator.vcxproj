@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
+    <ClCompile Include="Clear.cpp" />
     <ClCompile Include="Delete.cpp" />
     <ClCompile Include="Diff.cpp" />
     <ClCompile Include="Div.cpp" />
