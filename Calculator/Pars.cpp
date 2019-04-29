@@ -112,6 +112,7 @@ string parse(string s)
 					strfir = bracklf(s, n - 1, delta);
 					n -= delta; // потому что строка сдвигается из-за сдвига скобок
 					j = n - 1 - strfir.size();
+					n += delta;
 					first = atof(strfir.c_str());
 				}
 				else

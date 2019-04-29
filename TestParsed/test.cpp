@@ -70,13 +70,13 @@ TEST(VeryHardTest, FirstTest) {
 }
 
 TEST(VeryHardTest, SecondTest) {
-	string s = "(2*2)^";
-	string result = "154";
+	string s = "(2*4)^";
+	string result = "64";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
 
 TEST(VeryHardTest, ThirdTest) {
-	string s = "Sqrt16";
-	string result = "4";
+	string s = "Sqrt(16+33)";
+	string result = "7";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
