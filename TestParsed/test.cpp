@@ -80,3 +80,9 @@ TEST(VeryHardTest, ThirdTest) {
 	string result = "7";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
+
+TEST(VeryHardTest, FourtyTest) {
+	string s = "Sqrt(28*7) + 11^";
+	string result = "135";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+}
