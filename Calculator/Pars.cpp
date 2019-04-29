@@ -93,15 +93,13 @@ string parse(string s)
 				if (s[n + 1] == '(')//правая часть от плюса
 				{
 					strsec = brackri(s, n + 1, delta);//получаем результат в виде строки 
-					i = strsec.size() + n + delta;//узнаём её длину для replace 
+					i = n + delta;//узнаём её длину для replace 
 					second = atof(strsec.c_str());//конвертируем
 				}
 				else
 					second = getsecnum(s, n, i);
 				
-				cout << s << endl;
 				n = replace(s, n - 3, i, Root(second));//курсор на последний символ результата операции
-				cout << s << endl;
 			}
 		}
 

@@ -82,7 +82,7 @@ TEST(VeryHardTest, ThirdTest) {
 }
 
 TEST(VeryHardTest, FourtyTest) {
-	string s = "Sqrt(28*7) + 11^";
-	string result = "135";
+	string s = "Sqrt(42+22)+11^";
+	string result = "129";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
