@@ -1,5 +1,5 @@
-#include <iostream>
 #include "pch.h"
+#include <iostream>
 #include "IncludeGuards.h"
 #include <string>
 
@@ -93,13 +93,15 @@ string parse(string s)
 				if (s[n + 1] == '(')//правая часть от плюса
 				{
 					strsec = brackri(s, n + 1, delta);//получаем результат в виде строки 
-					i = strsec.size() + n + 1;//узнаём её длину для replace 
+					i = strsec.size() + n + delta;//узнаём её длину для replace 
 					second = atof(strsec.c_str());//конвертируем
 				}
 				else
 					second = getsecnum(s, n, i);
-
-				n = replace(s, n - 3, i - 1, Root(second));//курсор на последний символ результата операции
+				
+				cout << s << endl;
+				n = replace(s, n - 3, i, Root(second));//курсор на последний символ результата операции
+				cout << s << endl;
 			}
 		}
 
@@ -112,6 +114,7 @@ string parse(string s)
 					strfir = bracklf(s, n - 1, delta);
 					n -= delta; // потому что строка сдвигается из-за сдвига скобок
 					j = n - 1 - strfir.size();
+					n += delta;
 					first = atof(strfir.c_str());
 				}
 				else
