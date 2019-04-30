@@ -86,3 +86,15 @@ TEST(VeryHardTest, FourtyTest) {
 	string result = "129";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
+
+TEST(VeryHardTest, FiftyTest) {
+	string s = "Sqrt(4*6/3*2)+3^-4*2";
+	string result = "5";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+}
+
+TEST(VeryHardTest, SixtyTest) {
+	string s = "(7*(Sqrt(6*2*4+1))-2)+3^/3-((4*2)-3*2)";
+	string result = "48";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+}
