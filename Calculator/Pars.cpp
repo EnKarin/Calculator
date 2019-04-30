@@ -5,12 +5,11 @@
 
 using namespace std;
 
-string brackri(string &s, int i, int &del)
+double brackri(string &s, int i, int &del)
 {
 	//sh -разница между открывающимися и закрывающимися скобками
 	bool flag = false;//индикатор начала чтения скобок
 	int first, second;
-	string result;
 	for (int sh = 0; i < s.size(); i++)
 	{
 		if (s[i] == '(')
@@ -33,17 +32,12 @@ string brackri(string &s, int i, int &del)
 		}
 	}
 	del = second - first + 1;
-	s.erase(second, 1);
-	s.erase(first, 1);
-	result = parse(s.substr(first, second - first - 1));//подстчёт того, что в скобках
-	del -= result.size();
-	return result;
+	return atof(parse(s.substr(first + 1, second - first - 1)).c_str());//подстчёт того, что в скобках
 }
 
-string bracklf(string &s, int i, int &del)
+double bracklf(string &s, int i, int &del)
 {
 	//sh - разница между открывающимися и закрывающимися скобками(их количеством)
-	string result;
 	bool flag = false;//индикатор начала чтения скобок
 	int first, second;
 	for (int sh = 0; i >= 0; i--)
@@ -68,17 +62,14 @@ string bracklf(string &s, int i, int &del)
 		}
 	}
 	del = second - first + 1;
-	s.erase(second, 1);
-	s.erase(first, 1);
-	result = parse(s.substr(first, second - first - 1));//подстчёт того, что в скобках
-	del -= result.size();
-	return result;
+	cout << second << endl;
+	cout << first << endl;
+	return atof(parse(s.substr(first + 1, second - first - 1)).c_str());//подстчёт того, что в скобках
 }
 
 string parse(string s)
 {
 	double first, second;
-	string strfir, strsec; // наши числа, только в формате строки
 	int i, j;
 	int delta;//для того, чтобы смещать курсор текущего знака после изменения строки
 	bool forsvitch; // чтобы разделять плюс и минус; умножение и деление внути одного цикла
@@ -92,14 +83,13 @@ string parse(string s)
 				n += 3;//проскакиваем надпись Sqrt
 				if (s[n + 1] == '(')//правая часть от плюса
 				{
-					strsec = brackri(s, n + 1, delta);//получаем результат в виде строки 
-					i = n + delta;//узнаём её длину для replace 
-					second = atof(strsec.c_str());//конвертируем
+					second = brackri(s, n + 1, delta);//получаем результат в виде строки 
+					i = n + delta + 1;//узнаём её длину для replace 
 				}
 				else
 					second = getsecnum(s, n, i);
 				
-				n = replace(s, n - 3, i, Root(second));//курсор на последний символ результата операции
+				n = replace(s, n - 3, i - 1, Root(second));//курсор на последний символ результата операции
 			}
 		}
 
@@ -109,11 +99,8 @@ string parse(string s)
 			{
 				if (s[n - 1] == ')')//левая часть от знака
 				{
-					strfir = bracklf(s, n - 1, delta);
-					n -= delta; // потому что строка сдвигается из-за сдвига скобок
-					j = n - 1 - strfir.size();
-					n += delta;
-					first = atof(strfir.c_str());
+					first = bracklf(s, n - 1, delta);
+					j = n - delta - 1;
 				}
 				else
 					first = getfirnum(s, n, j);
@@ -127,21 +114,18 @@ string parse(string s)
 			if (s[n] == '*' || s[n] == '/')
 			{
 				forsvitch = (s[n] == '*' ? true : false);
-				if (s[n + 1] == '(')//правая часть от знака
+				if (s[n + 1] == '(')//правая часть от плюса
 				{
-					strsec = brackri(s, n + 1, delta);//получаем результат в виде строки 
-					i = strsec.size() + n + 1;//узнаём её длину для replace 
-					second = atof(strsec.c_str());//конвертируем
+					second = brackri(s, n + 1, delta);//получаем результат в виде строки 
+					i = n + delta + 1;//узнаём её длину для replace 
 				}
 				else
 					second = getsecnum(s, n, i);
 
 				if (s[n - 1] == ')')//левая часть от знака
 				{
-					strfir = bracklf(s, n - 1, delta);
-					n -= delta; // потому что строка сдвигается из-за сдвига скобок
-					j = n - 1 - strfir.size();
-					first = atof(strfir.c_str());
+					first = bracklf(s, n - 1, delta);
+					j = n - delta - 1;
 				}
 				else
 					first = getfirnum(s, n, j);
@@ -160,19 +144,16 @@ string parse(string s)
 				forsvitch = (s[n] == '+' ? true : false);
 				if (s[n + 1] == '(')//правая часть от плюса
 				{
-					strsec = brackri(s, n + 1, delta);//получаем результат в виде строки 
-					i = strsec.size() + n + 1;//узнаём её длину для replace 
-					second = atof(strsec.c_str());//конвертируем
+					second = brackri(s, n + 1, delta);//получаем результат в виде строки 
+					i = n + delta + 1;//узнаём её длину для replace 
 				}
 				else
 					second = getsecnum(s, n, i);
 
-				if (s[n - 1] == ')')//левая часть от плюса
+				if (s[n - 1] == ')')//левая часть от знака
 				{
-					strfir = bracklf(s, n - 1, delta);
-					n -= delta; // потому что строка сдвигается из-за сдвига скобок
-					j = n - 1 - strfir.size();
-					first = atof(strfir.c_str());
+					first = bracklf(s, n - 1, delta);
+					j = n - delta - 1;
 				}
 				else
 					first = getfirnum(s, n, j);
@@ -183,7 +164,7 @@ string parse(string s)
 					n = replace(s, j + 1, i - 1, Diff(first, second));
 			}
 		}
-
+		cout << s << endl;
 		close = true;
 		for (int k = 0; k < s.size(); k++)//завершаем цикл обработки, когда в строке останутся только цифры
 			if (!isdigit(s[k]))
