@@ -62,8 +62,6 @@ double bracklf(string &s, int i, int &del)
 		}
 	}
 	del = second - first + 1;
-	cout << second << endl;
-	cout << first << endl;
 	return atof(parse(s.substr(first + 1, second - first - 1)).c_str());//подстчёт того, что в скобках
 }
 
