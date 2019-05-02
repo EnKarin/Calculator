@@ -98,3 +98,16 @@ TEST(VeryHardTest, SixtyTest) {
 	string result = "48";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
+
+TEST(TestDivZero, TestDivZeroIntro) {
+	string s = "1/0";
+	string result = "Division by zero is impossible";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+}
+
+
+TEST(TestDivZero, TestDivZeroExp) {
+	string s = "((5*4)-1/1)/(5/5-1)";
+	string result = "Division by zero is impossible";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+}
