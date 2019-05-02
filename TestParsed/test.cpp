@@ -111,3 +111,17 @@ TEST(TestDivZero, TestDivZeroExp) {
 	string result = "Division by zero is impossible";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
+
+TEST(TestRealNum, TestOtric)
+{
+	string s = "((5-6)*-1)-6";
+	string result = "-5";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+}
+
+TEST(TestRealNum, TestDrob)
+{
+	string s = "(1/10)+2";
+	string result = "2.1";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+}

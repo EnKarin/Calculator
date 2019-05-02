@@ -175,8 +175,8 @@ string parse(string s)
 			}
 		}
 		close = true;
-		for (int k = 0; k < s.size(); k++)//завершаем цикл обработки, когда в строке останутся только цифры
-			if (!isdigit(s[k]))
+		for (int k = 0; k < s.size(); k++)//завершаем цикл обработки, когда в строке останутся только цифры или допустимые символы
+			if (!(isdigit(s[k]) || s[k] == '.' || s[k] == '-'))
 			{
 				close = false;
 				break;
