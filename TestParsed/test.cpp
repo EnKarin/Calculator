@@ -115,13 +115,36 @@ TEST(TestDivZero, TestDivZeroExp) {
 TEST(TestRealNum, TestOtric)
 {
 	string s = "((5-6)*-1)-6";
+	string s2 = "1--5*3";
+	string s3 = "5-8*2";
+	string s4 = "7+(-11/4)";
+	string s5 = "7+-11/8";
 	string result = "-5";
+	string result2 = "16";
+	string result3 = "-11";
+	string result4 = "4.25";
+	string result5 = "5.625";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+	ASSERT_STRCASEEQ(result2.c_str(), parse(s2).c_str());
+	ASSERT_STRCASEEQ(result3.c_str(), parse(s3).c_str());
+	ASSERT_STRCASEEQ(result4.c_str(), parse(s4).c_str());
+	ASSERT_STRCASEEQ(result5.c_str(), parse(s5).c_str());
+}
+
+TEST(TestRealNum, FistSymvol)
+{
+	string s = "-5/2";
+	string result = "-2.5";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 }
 
 TEST(TestRealNum, TestDrob)
 {
 	string s = "(1/10)+2";
+	string s2 = "7/4*11--5";
 	string result = "2.1";
+	string result2 = "24.25";
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+	ASSERT_STRCASEEQ(result2.c_str(), parse(s2).c_str());
 }
+

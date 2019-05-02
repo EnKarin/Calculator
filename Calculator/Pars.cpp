@@ -68,8 +68,6 @@ double bracklf(string &s, int i, int &del)
 
 string parse(string s)
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 	double first, second;
 	int i, j;
 	int delta;//для того, чтобы смещать курсор текущего знака после изменения строки
@@ -94,7 +92,7 @@ string parse(string s)
 			}
 		}
 
-		for (int n = 0; n < s.size(); n++)//степень
+		for (int n = 1; n < s.size(); n++)//степень
 		{
 			if (s[n] == '^')
 			{
@@ -110,7 +108,7 @@ string parse(string s)
 			}
 		}
 
-		for (int n = 0; n < s.size(); n++)//умножение и деление
+		for (int n = 1; n < s.size(); n++)//умножение и деление
 		{
 			if (s[n] == '*' || s[n] == '/')
 			{
@@ -147,7 +145,7 @@ string parse(string s)
 			}
 		}
 
-		for (int n = 0; n < s.size(); n++)//сложение и вычитание
+		for (int n = 1; n < s.size(); n++)//сложение и вычитание
 		{
 			if (s[n] == '+' || s[n] == '-')
 			{
