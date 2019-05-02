@@ -2,6 +2,7 @@
 #include <iostream>
 #include "IncludeGuards.h"
 #include <string>
+#include <Windows.h>
 
 using namespace std;
 
@@ -91,7 +92,7 @@ string parse(string s)
 			}
 		}
 
-		for (int n = 0; n < s.size(); n++)//степень
+		for (int n = 1; n < s.size(); n++)//степень
 		{
 			if (s[n] == '^')
 			{
@@ -107,7 +108,7 @@ string parse(string s)
 			}
 		}
 
-		for (int n = 0; n < s.size(); n++)//умножение и деление
+		for (int n = 1; n < s.size(); n++)//умножение и деление
 		{
 			if (s[n] == '*' || s[n] == '/')
 			{
@@ -127,15 +128,24 @@ string parse(string s)
 				}
 				else
 					first = getfirnum(s, n, j);
-
 				if (forsvitch)
 					n = replace(s, j + 1, i - 1, Multi(first, second));//курсор на последний символ результата операции
 				else
+				{
+					if (second == 0)
+					{
+						s = "Division by zero is impossible";
+						goto End;
+						break;
+					}
+					else
 					n = replace(s, j + 1, i - 1, Div(first, second));
+				}
+
 			}
 		}
 
-		for (int n = 0; n < s.size(); n++)//сложение и вычитание
+		for (int n = 1; n < s.size(); n++)//сложение и вычитание
 		{
 			if (s[n] == '+' || s[n] == '-')
 			{
@@ -162,14 +172,14 @@ string parse(string s)
 					n = replace(s, j + 1, i - 1, Diff(first, second));
 			}
 		}
-		cout << s << endl;
 		close = true;
-		for (int k = 0; k < s.size(); k++)//завершаем цикл обработки, когда в строке останутся только цифры
-			if (!isdigit(s[k]))
+		for (int k = 0; k < s.size(); k++)//завершаем цикл обработки, когда в строке останутся только цифры или допустимые символы
+			if (!(isdigit(s[k]) || s[k] == '.' || s[k] == '-'))
 			{
 				close = false;
 				break;
 			}
 	}
+	End:
 	return s;
 }
