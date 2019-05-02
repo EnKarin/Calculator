@@ -2,6 +2,7 @@
 #include <iostream>
 #include "IncludeGuards.h"
 #include <string>
+#include <Windows.h>
 
 using namespace std;
 
@@ -62,13 +63,13 @@ double bracklf(string &s, int i, int &del)
 		}
 	}
 	del = second - first + 1;
-	cout << second << endl;
-	cout << first << endl;
 	return atof(parse(s.substr(first + 1, second - first - 1)).c_str());//подстчёт того, что в скобках
 }
 
 string parse(string s)
 {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	double first, second;
 	int i, j;
 	int delta;//для того, чтобы смещать курсор текущего знака после изменения строки
@@ -129,11 +130,20 @@ string parse(string s)
 				}
 				else
 					first = getfirnum(s, n, j);
-
 				if (forsvitch)
 					n = replace(s, j + 1, i - 1, Multi(first, second));//курсор на последний символ результата операции
 				else
+				{
+					if (second == 0)
+					{
+						s = "Division by zero is impossible";
+						goto End;
+						break;
+					}
+					else
 					n = replace(s, j + 1, i - 1, Div(first, second));
+				}
+
 			}
 		}
 
@@ -164,7 +174,6 @@ string parse(string s)
 					n = replace(s, j + 1, i - 1, Diff(first, second));
 			}
 		}
-		cout << s << endl;
 		close = true;
 		for (int k = 0; k < s.size(); k++)//завершаем цикл обработки, когда в строке останутся только цифры
 			if (!isdigit(s[k]))
@@ -173,5 +182,6 @@ string parse(string s)
 				break;
 			}
 	}
+	End:
 	return s;
 }
