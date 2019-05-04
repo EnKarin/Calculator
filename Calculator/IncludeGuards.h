@@ -20,16 +20,18 @@ std::string Delete(std::string);
 
 std::string parse(std::string);
 
-double bracklf(std::string &, int, int&);
+double bracklf(std::string&, int, int&);
 
-double brackri(std::string &, int, int&);
+double brackri(std::string&, int, int&);
 
 double getfirnum(std::string, int, int&);
 
 int replace(std::string&, int, int, double);
 
-int replace(std::string &, int, int, double);
+int replace(std::string&, int, int, double);
 
 double getsecnum(std::string, int, int&);
+
+std::string check(std::string);
 
 #endif 
