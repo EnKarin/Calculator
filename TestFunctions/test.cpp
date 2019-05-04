@@ -153,4 +153,3 @@ TEST(TestData, TestClear) {
 	ASSERT_STRCASEEQ("", Clear(s2).c_str());
 	ASSERT_STRCASEEQ("", Clear(s3).c_str());
 }
-

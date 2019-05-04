@@ -10,6 +10,7 @@
 #include "../Calculator/Sum.cpp"
 #include "../Calculator/Multi.cpp"
 #include "../Calculator/Replace.cpp"
+#include "../Calculator/Check.cpp"
 
 using namespace std;
 
@@ -156,4 +157,13 @@ TEST(TestRoot, TestRootNegative) {
 	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
 	ASSERT_STRCASEEQ(result.c_str(), parse(s2).c_str());
 	ASSERT_STRCASEEQ(result.c_str(), parse(s3).c_str());
+}
+
+TEST(TestCheck, TestCheck) {
+	string s1 = "((1+9", s2 = "(1*2+4)", s3 = "(Sqrt(4)*", s4 = "(9*(1+5)-10/2*3)";
+	string result = "Incorrect brackets", result2 = "6", result4 = "39";
+	ASSERT_STRCASEEQ(result.c_str(), check(s1).c_str());
+	ASSERT_STRCASEEQ(result2.c_str(), check(s2).c_str());
+	ASSERT_STRCASEEQ(result.c_str(), check(s3).c_str());
+	ASSERT_STRCASEEQ(result4.c_str(), check(s4).c_str());
 }
