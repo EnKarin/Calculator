@@ -148,3 +148,12 @@ TEST(TestRealNum, TestDrob)
 	ASSERT_STRCASEEQ(result2.c_str(), parse(s2).c_str());
 }
 
+TEST(TestRoot, TestRootNegative) {
+	string s = "Sqrt(-25)";
+	string s2 = "Sqrt(25*9/88-11)";
+	string s3 = "Sqrt(25.94*9.01/88-11.99)";
+	string result = "There is no negative root";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+	ASSERT_STRCASEEQ(result.c_str(), parse(s2).c_str());
+	ASSERT_STRCASEEQ(result.c_str(), parse(s3).c_str());
+}

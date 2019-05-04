@@ -87,7 +87,13 @@ string parse(string s)
 				}
 				else
 					second = getsecnum(s, n, i);
-				
+				if (second < 0)
+				{
+					s = "There is no negative root";
+					goto End;
+					break;
+				}
+				else
 				n = replace(s, n - 3, i - 1, Root(second));//курсор на последний символ результата операции
 			}
 		}
