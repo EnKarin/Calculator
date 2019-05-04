@@ -10,6 +10,7 @@
 #include "../Calculator/Sum.cpp"
 #include "../Calculator/Multi.cpp"
 #include "../Calculator/Replace.cpp"
+#include "../Calculator/Check.cpp"
 
 using namespace std;
 
@@ -148,3 +149,21 @@ TEST(TestRealNum, TestDrob)
 	ASSERT_STRCASEEQ(result2.c_str(), parse(s2).c_str());
 }
 
+TEST(TestRoot, TestRootNegative) {
+	string s = "Sqrt(-25)";
+	string s2 = "Sqrt(25*9/88-11)";
+	string s3 = "Sqrt(25.94*9.01/88-11.99)";
+	string result = "There is no negative root";
+	ASSERT_STRCASEEQ(result.c_str(), parse(s).c_str());
+	ASSERT_STRCASEEQ(result.c_str(), parse(s2).c_str());
+	ASSERT_STRCASEEQ(result.c_str(), parse(s3).c_str());
+}
+
+TEST(TestCheck, TestCheck) {
+	string s1 = "((1+9", s2 = "(1*2+4)", s3 = "(Sqrt(4)*", s4 = "(9*(1+5)-10/2*3)";
+	string result = "Incorrect brackets", result2 = "6", result4 = "39";
+	ASSERT_STRCASEEQ(result.c_str(), check(s1).c_str());
+	ASSERT_STRCASEEQ(result2.c_str(), check(s2).c_str());
+	ASSERT_STRCASEEQ(result.c_str(), check(s3).c_str());
+	ASSERT_STRCASEEQ(result4.c_str(), check(s4).c_str());
+}
