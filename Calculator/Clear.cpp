@@ -6,6 +6,5 @@ using namespace std;
 
 string Clear(string s)
 {
-	s.clear();
-	return s;
+	return "0";
 }
