@@ -148,8 +148,7 @@ TEST(TestData, TestDelete) {
 }
 
 TEST(TestData, TestClear) {
-	string s1 = "1937", s2 = "198.40+", s3 = "19+448=567";
-	ASSERT_STRCASEEQ("0", Clear(s1).c_str());
-	ASSERT_STRCASEEQ("0", Clear(s2).c_str());
-	ASSERT_STRCASEEQ("0", Clear(s3).c_str());
+	ASSERT_STRCASEEQ("0", Clear().c_str());
+	ASSERT_STRCASEEQ("0", Clear().c_str());
+	ASSERT_STRCASEEQ("0", Clear().c_str());
 }

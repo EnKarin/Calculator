@@ -14,7 +14,7 @@ double Root(double);
 
 double Expon(double);
 
-std::string Clear(std::string);
+std::string Clear();
 
 std::string Delete(std::string);
 
