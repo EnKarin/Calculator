@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string Clear(string s)
+string Clear()
 {
 	return "0";
 }
