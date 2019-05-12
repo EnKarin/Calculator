@@ -86,7 +86,7 @@ string parse(string s)
 				second = getsecnum(s, n, i);
 			if (second < 0)
 			{
-				s = "There is no negative root";
+				s = "Error";
 				break;
 			}
 			else
@@ -136,7 +136,7 @@ string parse(string s)
 			{
 				if (second == 0)
 				{
-					s = "Division by zero is impossible";
+					s = "Error";
 					break;
 				}
 				else
