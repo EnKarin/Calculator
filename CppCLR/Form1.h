@@ -1,13 +1,18 @@
-﻿#include "../Calculator/Pars.cpp"
-#include "../Calculator/GetFirNum.cpp"
-#include "../Calculator/GetSecNum.cpp"
-#include "../Calculator/Diff.cpp"
+﻿#include "../Calculator/Check.cpp"
+#include "../Calculator/Pars.cpp"
+#include "../Calculator/Clear.cpp"
+#include "../Calculator/Delete.cpp"
 #include "../Calculator/Div.cpp"
-#include "../Calculator/Expon.cpp"
-#include "../Calculator/Root.cpp"
+#include "../Calculator/Diff.cpp"
 #include "../Calculator/Sum.cpp"
 #include "../Calculator/Multi.cpp"
+#include "../Calculator/Root.cpp"
+#include "../Calculator/Expon.cpp"
+#include "../Calculator/GetFirNum.cpp"
+#include "../Calculator/GetSecNum.cpp"
 #include "../Calculator/Replace.cpp"
+#include "../Calculator/IncludeGuards.h"
+#include <msclr\marshal_cppstd.h>
 #pragma once
 
 namespace CppCLR_WinformsProjekt {
@@ -111,14 +116,14 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			// lblDisplay
 			// 
-			this->lblDisplay->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->lblDisplay->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->lblDisplay->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->lblDisplay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lblDisplay->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->lblDisplay->Location = System::Drawing::Point(12, 30);
 			this->lblDisplay->Name = L"lblDisplay";
-			this->lblDisplay->Size = System::Drawing::Size(478, 51);
+			this->lblDisplay->Size = System::Drawing::Size(477, 50);
 			this->lblDisplay->TabIndex = 0;
 			this->lblDisplay->Text = L"0";
 			this->lblDisplay->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -128,7 +133,8 @@ namespace CppCLR_WinformsProjekt {
 			this->button1->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->Location = System::Drawing::Point(42, 181);
+			this->button1->Location = System::Drawing::Point(43, 181);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(64, 69);
 			this->button1->TabIndex = 1;
@@ -142,6 +148,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button2->Location = System::Drawing::Point(124, 181);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(64, 69);
 			this->button2->TabIndex = 2;
@@ -155,6 +162,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button3->Location = System::Drawing::Point(209, 181);
+			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(64, 69);
 			this->button3->TabIndex = 3;
@@ -167,7 +175,8 @@ namespace CppCLR_WinformsProjekt {
 			this->button4->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button4->Location = System::Drawing::Point(42, 265);
+			this->button4->Location = System::Drawing::Point(43, 265);
+			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(64, 69);
 			this->button4->TabIndex = 4;
@@ -181,6 +190,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button5->Location = System::Drawing::Point(124, 265);
+			this->button5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(64, 69);
 			this->button5->TabIndex = 5;
@@ -194,6 +204,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button6->Location = System::Drawing::Point(209, 265);
+			this->button6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(64, 69);
 			this->button6->TabIndex = 6;
@@ -206,7 +217,8 @@ namespace CppCLR_WinformsProjekt {
 			this->button7->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button7->Location = System::Drawing::Point(42, 352);
+			this->button7->Location = System::Drawing::Point(43, 352);
+			this->button7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(64, 69);
 			this->button7->TabIndex = 7;
@@ -220,6 +232,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button8->Location = System::Drawing::Point(124, 352);
+			this->button8->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(64, 69);
 			this->button8->TabIndex = 8;
@@ -233,6 +246,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button9->Location = System::Drawing::Point(209, 352);
+			this->button9->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(64, 69);
 			this->button9->TabIndex = 9;
@@ -245,7 +259,8 @@ namespace CppCLR_WinformsProjekt {
 			this->button10->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->button10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button10->Location = System::Drawing::Point(42, 437);
+			this->button10->Location = System::Drawing::Point(43, 437);
+			this->button10->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(64, 69);
 			this->button10->TabIndex = 10;
@@ -259,6 +274,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button11->Location = System::Drawing::Point(124, 437);
+			this->button11->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button11->Name = L"button11";
 			this->button11->Size = System::Drawing::Size(64, 69);
 			this->button11->TabIndex = 11;
@@ -272,11 +288,13 @@ namespace CppCLR_WinformsProjekt {
 			this->button12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button12->Location = System::Drawing::Point(209, 437);
+			this->button12->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button12->Name = L"button12";
 			this->button12->Size = System::Drawing::Size(64, 69);
 			this->button12->TabIndex = 12;
 			this->button12->Text = L"=";
 			this->button12->UseVisualStyleBackColor = false;
+			this->button12->Click += gcnew System::EventHandler(this, &Form1::button12_Click);
 			// 
 			// button13
 			// 
@@ -284,6 +302,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button13->Location = System::Drawing::Point(327, 352);
+			this->button13->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button13->Name = L"button13";
 			this->button13->Size = System::Drawing::Size(67, 154);
 			this->button13->TabIndex = 13;
@@ -297,6 +316,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button14->Location = System::Drawing::Point(403, 437);
+			this->button14->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button14->Name = L"button14";
 			this->button14->Size = System::Drawing::Size(72, 69);
 			this->button14->TabIndex = 14;
@@ -310,6 +330,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button15->Location = System::Drawing::Point(403, 352);
+			this->button15->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button15->Name = L"button15";
 			this->button15->Size = System::Drawing::Size(72, 69);
 			this->button15->TabIndex = 15;
@@ -323,6 +344,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button16->Location = System::Drawing::Point(327, 265);
+			this->button16->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button16->Name = L"button16";
 			this->button16->Size = System::Drawing::Size(64, 69);
 			this->button16->TabIndex = 16;
@@ -336,6 +358,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button17->Location = System::Drawing::Point(403, 265);
+			this->button17->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button17->Name = L"button17";
 			this->button17->Size = System::Drawing::Size(72, 69);
 			this->button17->TabIndex = 17;
@@ -349,6 +372,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button18->Location = System::Drawing::Point(327, 181);
+			this->button18->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button18->Name = L"button18";
 			this->button18->Size = System::Drawing::Size(64, 69);
 			this->button18->TabIndex = 18;
@@ -362,11 +386,13 @@ namespace CppCLR_WinformsProjekt {
 			this->button19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button19->Location = System::Drawing::Point(403, 181);
+			this->button19->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button19->Name = L"button19";
 			this->button19->Size = System::Drawing::Size(72, 69);
 			this->button19->TabIndex = 19;
 			this->button19->Text = L"C";
 			this->button19->UseVisualStyleBackColor = false;
+			this->button19->Click += gcnew System::EventHandler(this, &Form1::button19_Click);
 			// 
 			// button20
 			// 
@@ -374,6 +400,7 @@ namespace CppCLR_WinformsProjekt {
 			this->button20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button20->Location = System::Drawing::Point(24, 97);
+			this->button20->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button20->Name = L"button20";
 			this->button20->Size = System::Drawing::Size(112, 69);
 			this->button20->TabIndex = 20;
@@ -389,8 +416,9 @@ namespace CppCLR_WinformsProjekt {
 				static_cast<System::Byte>(204)));
 			this->button21->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->button21->Location = System::Drawing::Point(172, 97);
+			this->button21->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button21->Name = L"button21";
-			this->button21->Size = System::Drawing::Size(118, 69);
+			this->button21->Size = System::Drawing::Size(117, 69);
 			this->button21->TabIndex = 21;
 			this->button21->Text = L")";
 			this->button21->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -403,18 +431,20 @@ namespace CppCLR_WinformsProjekt {
 			this->button22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button22->Location = System::Drawing::Point(312, 97);
+			this->button22->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button22->Name = L"button22";
 			this->button22->Size = System::Drawing::Size(163, 69);
 			this->button22->TabIndex = 22;
 			this->button22->Text = L"Backspace";
 			this->button22->UseVisualStyleBackColor = false;
+			this->button22->Click += gcnew System::EventHandler(this, &Form1::button22_Click);
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::GradientActiveCaption;
-			this->ClientSize = System::Drawing::Size(502, 533);
+			this->ClientSize = System::Drawing::Size(501, 533);
 			this->Controls->Add(this->button22);
 			this->Controls->Add(this->button21);
 			this->Controls->Add(this->button20);
@@ -438,9 +468,10 @@ namespace CppCLR_WinformsProjekt {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->lblDisplay);
-			this->Margin = System::Windows::Forms::Padding(4);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Text = L"Калькулятор";
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load_1);
 			this->ResumeLayout(false);
 
 		}
@@ -450,172 +481,171 @@ namespace CppCLR_WinformsProjekt {
 		int Result;
 		char operation;
 #pragma endregion
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button18_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "Sqrt";
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button18_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "Sqrt";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "Sqrt";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "Sqrt";
-	}
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "1";
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "1";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "1";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "1";
-	}
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "2";
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "2";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "2";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "2";
-	}
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "3";
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "3";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "3";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "3";
-	}
-}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "4";
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "4";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "4";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "4";
-	}
-}
-private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "5";
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "5";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "5";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "5";
-	}
-}
-private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "6";
+	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "6";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "6";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "6";
-	}
-}
-private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "7";
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "7";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "7";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "7";
-	}
-}
-private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "8";
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "8";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "8";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "8";
-	}
-}
-private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "9";
+	private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "9";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "9";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "9";
-	}
-}
-private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "0";
+	private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "0";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "0";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "0";
-	}
-}
-private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "step";
+	private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "^";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "^";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "step";
-	}
-}
-private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = ",";
+	private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = ",";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + ",";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + ",";
-	}
-}
-private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "+";
+	private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "+";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "+";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "+";
-	}
-}
-private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "-";
+	private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "*";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "*";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "-";
-	}
-}
-private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "*";
+	private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "-";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "-";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "*";
-	}
-}
-private: System::Void button17_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = "/";
+	private: System::Void button17_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = "/";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + "/";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + "/";
-	}
-}
-private: System::Void button21_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (lblDisplay->Text == "0") {
-		lblDisplay->Text = ")";
+	private: System::Void button21_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (lblDisplay->Text == "0") {
+			lblDisplay->Text = ")";
 
+		}
+		else {
+			lblDisplay->Text = (lblDisplay->Text) + ")";
+		}
 	}
-	else {
-		lblDisplay->Text = (lblDisplay->Text) + ")";
-	}
-}
-private:
-	System::Void button20_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button20_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (lblDisplay->Text == "0") {
 			lblDisplay->Text = "(";
 
@@ -625,20 +655,21 @@ private:
 		}
 	}
 
-	System::Void button19_Click(System::Object^ sender, System::EventArgs^ e) {
-		lblDisplay->Text = Сlear(lblDisplay->Text);
+	private:System::Void button19_Click(System::Object^ sender, System::EventArgs^ e) {
+		lblDisplay->Text = gcnew System::String(Clear().c_str());
 	}
 
-	System::Void button22_Click(System::Object^ sender, System::EventArgs^ e) {
-		lblDisplay->Text = Delete(lblDisplay->Text);
+	private:System::Void button22_Click(System::Object^ sender, System::EventArgs^ e) {
+		lblDisplay->Text = gcnew System::String(Delete(msclr::interop::marshal_as<std::string>(lblDisplay->Text)).c_str());
 	}
 
-	System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
-		lblDisplay->Text = parse(lblDisplay->Text);
+	private:System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
+		lblDisplay->Text = gcnew System::String(check(msclr::interop::marshal_as<std::string>(lblDisplay->Text)).c_str());
 	}
 
-private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-}
-;
+	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Form1_Load_1(System::Object^  sender, System::EventArgs^  e) {
+	}
+};
 };
