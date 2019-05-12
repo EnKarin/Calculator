@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 string Clear()
 {
 	return "0";
