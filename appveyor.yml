@@ -6,7 +6,7 @@ before_build:
   - nuget restore
 build:
   verbosity: minimal
-  test_script:
+test_script:
   - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\TestFunctions.exe'
   - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\TestGetNum.exe'
   - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\TestParsed.exe'
