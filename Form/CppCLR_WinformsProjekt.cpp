@@ -8,7 +8,6 @@
 //    Console::WriteLine(L"Hello World");
 //    return 0;
 //}
-#include "stdafx.h"
 #include "Form1.h"
 
 using namespace System;
