@@ -489,8 +489,15 @@ namespace CppCLR_WinformsProjekt {
 
 		}
 		else {
-			if((lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "^"))
-				lblDisplay->Text = (lblDisplay->Text) + "Sqrt";
+			if ((lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "^"))
+			{
+				if (Char::IsDigit(System::Convert::ToChar(lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1))))
+					lblDisplay->Text = (lblDisplay->Text) + "*Sqrt";
+				else if ((lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) == "t"))
+					lblDisplay->Text = (lblDisplay->Text) + "(Sqrt";
+				else
+					lblDisplay->Text = (lblDisplay->Text) + "Sqrt";
+			}
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
