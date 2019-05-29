@@ -28,8 +28,6 @@ double getfirnum(std::string, int, int&);
 
 int replace(std::string&, int, int, double);
 
-int replace(std::string&, int, int, double);
-
 double getsecnum(std::string, int, int&);
 
 std::string check(std::string);
