@@ -636,7 +636,13 @@ namespace CppCLR_WinformsProjekt {
 	}
 
 	private:System::Void button22_Click(System::Object^ sender, System::EventArgs^ e) {
-		lblDisplay->Text = gcnew System::String(Delete(msclr::interop::marshal_as<std::string>(lblDisplay->Text)).c_str());
+		if (lblDisplay->Text->Length > 4 && lblDisplay->Text->Substring(lblDisplay->Text->Length - 4, 4) == "Sqrt")
+			for (int i = 0; i < 4; i++)
+				lblDisplay->Text = gcnew System::String(Delete(msclr::interop::marshal_as<std::string>(lblDisplay->Text)).c_str());
+		else if (lblDisplay->Text->Length == 4 && lblDisplay->Text->Substring(lblDisplay->Text->Length - 4, 4) == "Sqrt")
+			lblDisplay->Text = "0";
+		else
+			lblDisplay->Text = gcnew System::String(Delete(msclr::interop::marshal_as<std::string>(lblDisplay->Text)).c_str());
 	}
 
 	private:System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
