@@ -489,7 +489,8 @@ namespace CppCLR_WinformsProjekt {
 
 		}
 		else {
-			lblDisplay->Text = (lblDisplay->Text) + "Sqrt";
+			if((lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "^"))
+				lblDisplay->Text = (lblDisplay->Text) + "Sqrt";
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -583,58 +584,33 @@ namespace CppCLR_WinformsProjekt {
 		}
 	}
 	private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (lblDisplay->Text == "0") {
-			lblDisplay->Text = "^";
-
-		}
-		else {
+		if (lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "-" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "+" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "/" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "*" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "t")
 			lblDisplay->Text = (lblDisplay->Text) + "^";
-		}
 	}
 	private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (lblDisplay->Text == "0") {
-			lblDisplay->Text = ",";
-
-		}
-		else {
-			lblDisplay->Text = (lblDisplay->Text) + ",";
-		}
+		if (lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "-" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "^" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "+" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "/" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "*" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "t")
+			lblDisplay->Text = (lblDisplay->Text) + ".";
 	}
 	private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (lblDisplay->Text == "0") {
-			lblDisplay->Text = "+";
-
-		}
-		else {
+		if (lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "-" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "+" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "/" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "*" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "t")
 			lblDisplay->Text = (lblDisplay->Text) + "+";
-		}
 	}
 	private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (lblDisplay->Text == "0") {
-			lblDisplay->Text = "*";
-
-		}
-		else {
+		if (lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "-"  && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "+" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "/" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "*" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "t")
 			lblDisplay->Text = (lblDisplay->Text) + "*";
-		}
 	}
 	private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (lblDisplay->Text == "0") {
+		if (lblDisplay->Text != "0")
+		{
+			if (lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "-")
+				lblDisplay->Text = (lblDisplay->Text) + "-";
+		}
+		else
 			lblDisplay->Text = "-";
-
-		}
-		else {
-			lblDisplay->Text = (lblDisplay->Text) + "-";
-		}
 	}
 	private: System::Void button17_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (lblDisplay->Text == "0") {
-			lblDisplay->Text = "/";
-
-		}
-		else {
+		if (lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "." && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "-" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "+" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "/" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "*" && lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1) != "t")
 			lblDisplay->Text = (lblDisplay->Text) + "/";
-		}
 	}
 	private: System::Void button21_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (lblDisplay->Text == "0") {
