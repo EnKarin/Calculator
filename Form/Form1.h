@@ -627,7 +627,10 @@ namespace CppCLR_WinformsProjekt {
 
 		}
 		else {
-			lblDisplay->Text = (lblDisplay->Text) + "(";
+			if(Char::IsDigit(System::Convert::ToChar(lblDisplay->Text->Substring(lblDisplay->Text->Length - 1, 1))))
+				lblDisplay->Text = (lblDisplay->Text) + "*(";
+			else
+				lblDisplay->Text = (lblDisplay->Text) + "(";
 		}
 	}
 
