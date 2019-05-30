@@ -90,7 +90,7 @@ string parse(string s)
 				break;
 			}
 			else
-			n = replace(s, n - 3, i - 1, Root(second));//курсор на последний символ результата операции
+				n = replace(s, n - 3, i - 1, Root(second));//курсор на последний символ результата операции
 		}
 	}
 
@@ -151,27 +151,44 @@ string parse(string s)
 		if (s[n] == '+' || s[n] == '-')
 		{
 			forsvitch = (s[n] == '+' ? true : false);
-			if (s[n + 1] == '(')//правая часть от плюса
+			if (forsvitch || s[n - 1] != '(')
 			{
-				second = brackri(s, n + 1, delta);//получаем результат в виде строки 
-				i = n + delta + 1;//узнаём её длину для replace 
-			}
-			else
-				second = getsecnum(s, n, i);
+				if (s[n + 1] == '(')//правая часть от плюса
+				{
+					second = brackri(s, n + 1, delta);//получаем результат в виде строки 
+					i = n + delta + 1;//узнаём её длину для replace 
+				}
+				else
+					second = getsecnum(s, n, i);
 
-			if (s[n - 1] == ')')//левая часть от знака
-			{
-				first = bracklf(s, n - 1, delta);
-				j = n - delta - 1;
-			}
-			else
-				first = getfirnum(s, n, j);
+				if (s[n - 1] == ')')//левая часть от знака
+				{
+					first = bracklf(s, n - 1, delta);
+					j = n - delta - 1;
+				}
+				else
+					first = getfirnum(s, n, j);
 
-			if (forsvitch)
-				n = replace(s, j + 1, i - 1, Sum(first, second));
-			else
-				n = replace(s, j + 1, i - 1, Diff(first, second));
+				if (forsvitch)
+					n = replace(s, j + 1, i - 1, Sum(first, second));
+				else
+					n = replace(s, j + 1, i - 1, Diff(first, second));
+			}
 		}
+	}
+	for (int i = 0; i < s.size();)
+	{
+		if (s[i] == '(' || s[i] == ')')
+			s.erase(i, 1);
+		else
+			i++;
+	}
+	for (int i = 0; i < s.size() - 1;)
+	{
+		if (s.substr(i, 2) == "--")
+			s.erase(i, 2);
+		else
+			i++;
 	}
 	return s;
 }
